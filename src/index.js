@@ -4,7 +4,18 @@
  * @param {string} string
  * @returns {string}
  */
-export const replaceZAndVFromString = (string) => {};
+export const replaceZAndVFromString = (string) => {
+  let filterString = "";
+  for (let i = 0; i < string.length; i++) {
+    const letterLowerCase = string[i].toLowerCase();
+    if ( letterLowerCase === 'z' || letterLowerCase === 'v') {
+      filterString += '*';
+    } else {
+      filterString += string[i];
+    }
+  }
+  return filterString;
+};
 
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
@@ -16,7 +27,10 @@ export const replaceZAndVFromString = (string) => {};
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => {
+  let wordChange = string.replace(word, newWord);
+  return wordChange;
+};
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -24,7 +38,10 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => {
+  return string.substring(0, length);
+};
+
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -37,7 +54,16 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+  let quantitySymbol = 0;
+    const stringToLowCase = string.toLowerCase();
+  for (let y = 0; y < stringToLowCase.length; y++) {
+    if (stringToLowCase[y] === symbol) {
+      quantitySymbol++;
+    }
+  }
+  return quantitySymbol;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -54,4 +80,18 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+  const stringsToLowCase = string.toLowerCase();
+  let position = 0;
+  let countSimbols = 0;
+  while (true) {
+    position = stringsToLowCase.indexOf(symbol, position);
+    if (position == -1) {
+      break
+    } else {
+      countSimbols++;
+      position++;
+    }
+  }
+  return countSimbols;
+}
