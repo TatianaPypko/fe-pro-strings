@@ -86,7 +86,7 @@ export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
   let countSimbols = 0;
   while (true) {
     position = stringsToLowCase.indexOf(symbol, position);
-    if (position == -1) {
+    if (position === -1) {
       break
     } else {
       countSimbols++;
